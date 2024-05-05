@@ -2,14 +2,9 @@ using System.Reflection;
 
 namespace ArcaneLibrary.Readers;
 
-public class AssemblyTextFileReader
+public class AssemblyTextFileReader(Assembly? assembly)
 {
-    private readonly Assembly _assembly;
-
-    public AssemblyTextFileReader(Assembly assembly)
-    {
-        _assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
-    }
+    private readonly Assembly _assembly = assembly ?? throw new ArgumentNullException(nameof(assembly));
 
     public async Task<string> ReadFileAsync(string fileName)
     {

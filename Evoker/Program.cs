@@ -1,6 +1,6 @@
-﻿using ArcaneLibrary.Domain;
-using ArcaneLibrary.Validators;
-using FluentValidation.Results;
+﻿// using Evoker;
+
+using Evoker;
 
 using var log = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -18,12 +18,27 @@ SpellValidator v = new();
 
 ValidationResult r = v.Validate(spell);
 
+log.Information(r.Errors.ToString());
 
-int a = 10, b = 0;
+// var reader = new AssemblyTextFileReader(assembly);
+//
+// string text = await reader.ReadFileAsync(@"MyFile.txt");
+
+var reader = new AssemblyTextFileReader(Assembly.GetEntryAssembly());
+var dir = Directory.GetCurrentDirectory();
+// string text = await reader.ReadFileAsync(@$"{dir}/test.html");
+
+// HtmlHelpers h = new();
+
+log.Information(reader.ToString() ?? "assembly not found");
+log.Information(HtmlHelpers.GetHtml(null));
+
+
 try
 {
-    Log.Debug("Dividing {A} by {B}", a, b);
-    Console.WriteLine(a / b);
+    Log.Debug("reading {dir} and {r}", dir, r);
+
+    HtmlHelpers.SaveHtmlFile();
 }
 catch (Exception ex)
 {

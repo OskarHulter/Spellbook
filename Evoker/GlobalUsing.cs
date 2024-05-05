@@ -4,3 +4,8 @@ global using System.Linq;
 global using System.Text;
 global using System.Reflection;
 global using Serilog;
+global using HtmlAgilityPack;
+global using ArcaneLibrary.Domain;
+global using ArcaneLibrary.Readers;
+global using ArcaneLibrary.Validators;
+global using FluentValidation.Results;
